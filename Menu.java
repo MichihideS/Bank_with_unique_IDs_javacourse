@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
 
     private Scanner scanner = new Scanner(System.in);
-    private Register registerOfAccount = new Register();
-    private Money bankAccount = new Money();
+    private Management management = new Management();
 
     public void mainMenu() {
 
@@ -23,11 +21,11 @@ public class Menu {
             switch (choiceOne) {
 
                 case 1:
-                registerOfAccount.addAccount();
+                management.addAccount();
                 break;
 
                 case 2:
-                registerOfAccount.loginAccount();
+                management.loginAccount();
                 menuTwo();
                 break;
 
@@ -36,10 +34,10 @@ public class Menu {
                 break;
 
             }
-
         } 
 
         while (runMenuOne);
+
     }
 
     public void menuTwo() {
@@ -48,7 +46,7 @@ public class Menu {
 
          do {
             
-            System.out.println("***KONTOMENY*** " + "Konto: ");
+            System.out.println("***KONTOMENY*** " + "Konto: " + management.getLogin());
             System.out.println("1. Ta ut pengar");
             System.out.println("2. Sätt in pengar");
             System.out.println("3. Visa saldo");
@@ -59,13 +57,15 @@ public class Menu {
             switch (choiceTwo) {
 
                 case 1:
-                bankAccount.withdraw();
+                //bankAccount.withdraw();
                 break;
 
                 case 2:
+                management.deposit();
                 break;
 
                 case 3:
+                //bankAccount.balance();
                 break;
 
                 case 4:
@@ -73,12 +73,9 @@ public class Menu {
                 break;
 
             }
-
         }
 
         while (runMenuTwo);
 
     }
-
-        
 }
