@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Management {
@@ -10,12 +11,21 @@ public class Management {
 
     public void addAccount() {
 
-        System.out.print("Ange kontonummer: ");
-        int account = scanner.nextInt();
+        int account = 0;
         int balance = 0;
+        boolean createAccount = true;
 
+        
+        System.out.print("Ange kontonummer: ");
+        account = scanner.nextInt();
+        
         bankAccounts.add(new Account(account, balance));
 
+        for (int i = 0; i < bankAccounts.size(); i++) {
+
+            System.out.println(bankAccounts.get(i).getAccount());
+            
+        }
     }
 
     public void loginAccount() {
@@ -51,21 +61,27 @@ public class Management {
 
     public void withdraw() {
 
+        int moneyWithdraw = 0;
+
         System.out.print("Ange belopp: ");
-        int moneyWithdraw = scanner.nextInt();
 
-        if (moneyWithdraw <= bankAccounts.get(i).getBalance()) {
+        
 
-            bankAccounts.get(i).setBalance(bankAccounts.get(i).getBalance() - moneyWithdraw);
-            System.out.println("OK");
+            moneyWithdraw = scanner.nextInt();
 
-        }
+            if (moneyWithdraw <= bankAccounts.get(i).getBalance()) {
 
-        else if (moneyWithdraw > bankAccounts.get(i).getBalance()) {
+                bankAccounts.get(i).setBalance(bankAccounts.get(i).getBalance() - moneyWithdraw);
+                System.out.println("OK");
 
-            System.out.println("Du har för litet saldo.");
+            }
 
-        }
+            else if (moneyWithdraw > bankAccounts.get(i).getBalance()) {
+
+                System.out.println("Du har för litet saldo.");
+
+            }
+
     }
 
     public void balance() {

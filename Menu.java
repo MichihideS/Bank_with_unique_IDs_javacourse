@@ -18,20 +18,19 @@ public class Menu {
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
             System.out.print("Ange menyval: ");
+            
+             if (scanner.hasNextInt()) {
 
-            try {
-                
                 choiceOne = scanner.nextInt();
 
             }
             
-            catch (InputMismatchException noNumber) {
+            else {
 
-                System.out.println("Felaktig inmatning, försök igen.");
-                scanner = new Scanner(System.in);
-
-           }
-
+                scanner.nextLine();
+                
+            }
+                
             switch (choiceOne) {
 
                 case 1:
@@ -71,18 +70,17 @@ public class Menu {
             System.out.println("3. Visa saldo");
             System.out.println("4. Avsluta");
             System.out.print("Ange menyval: ");
-            
-            try {
-
+     
+             if (scanner.hasNextInt()) {
+                
                 choiceTwo = scanner.nextInt();
 
             }
+            
+            else {
 
-            catch (InputMismatchException noNumber) {
-
-                System.out.println("Felaktig inmatning, försök igen.");
-                scanner = new Scanner(System.in);
-
+                scanner.nextLine();
+                
             }
 
             switch (choiceTwo) {
