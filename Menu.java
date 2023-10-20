@@ -51,13 +51,13 @@ public class Menu {
             System.out.println("2. Sätt in pengar");
             System.out.println("3. Visa saldo");
             System.out.println("4. Avsluta");
-            System.out.println("Ange menyval: ");
+            System.out.print("Ange menyval: ");
             int choiceTwo = scanner.nextInt();
 
             switch (choiceTwo) {
 
                 case 1:
-                //bankAccount.withdraw();
+                management.withdraw();
                 break;
 
                 case 2:
@@ -65,7 +65,7 @@ public class Menu {
                 break;
 
                 case 3:
-                //bankAccount.balance();
+                management.balance();
                 break;
 
                 case 4:

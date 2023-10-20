@@ -6,6 +6,7 @@ public class Management {
     private ArrayList<Account> bankAccounts = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private int login;
+    private int i;
 
     public void addAccount() {
 
@@ -15,13 +16,6 @@ public class Management {
 
         bankAccounts.add(new Account(account, balance));
 
-        System.out.println("funkar det?");
-        for (int i = 0; i < bankAccounts.size(); i++) {
-
-            System.out.println(bankAccounts.get(i).getAccount());
-            System.out.println(bankAccounts.get(i).getBalance());
-            
-        }
     }
 
     public void loginAccount() {
@@ -32,37 +26,52 @@ public class Management {
         login = scanner.nextInt();
         
 
-        for (int i = 0; i < bankAccounts.size(); i++) {
+        for (i = 0; i < bankAccounts.size(); i++) {
 
             if (login == (bankAccounts.get(i).getAccount())) {
-                System.out.println("works" + login);
+                System.out.println("OK");
                 break;
             }
 
             else if (!loggedIn) {
-                System.out.println("konto finns inte");
+                System.out.println("Detta konto existerar inte.");
             }
-            
         }
-
-        
     }
 
     public void deposit() {
 
-        System.out.println("sätt in pengar" + login);
-        int money = scanner.nextInt();
+        System.out.print("Ange belopp: ");
+        int depositMoney = scanner.nextInt();
 
-        for (int i = 0; i < bankAccounts.size(); i++) {
-    
-            if (login == (bankAccounts.get(i).getAccount())) {
+        bankAccounts.get(i).setBalance(bankAccounts.get(i).getBalance() + depositMoney );
+        System.out.println("OK");
+            
+    }
 
-              bankAccounts.get(i).setBalance(bankAccounts.get(i).getBalance() + money );
+    public void withdraw() {
 
-              System.out.println(bankAccounts.get(i).getBalance());
+        System.out.print("Ange belopp: ");
+        int moneyWithdraw = scanner.nextInt();
 
-            }
+        if (moneyWithdraw <= bankAccounts.get(i).getBalance()) {
+
+            bankAccounts.get(i).setBalance(bankAccounts.get(i).getBalance() - moneyWithdraw);
+            System.out.println("OK");
+
         }
+
+        else if (moneyWithdraw > bankAccounts.get(i).getBalance()) {
+
+            System.out.println("Du har för litet saldo.");
+
+        }
+    }
+
+    public void balance() {
+
+        System.out.println("Ditt saldo är: " + bankAccounts.get(i).getBalance());
+
     }
 
     public int getLogin() {
