@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -8,6 +9,7 @@ public class Menu {
     public void mainMenu() {
 
         boolean runMenuOne = true;
+        int choiceOne = 0;
 
         do {
 
@@ -16,7 +18,19 @@ public class Menu {
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
             System.out.print("Ange menyval: ");
-            int choiceOne = scanner.nextInt();
+
+            try {
+                
+                choiceOne = scanner.nextInt();
+
+            }
+            
+            catch (InputMismatchException noNumber) {
+
+                System.out.println("Felaktig inmatning, försök igen.");
+                scanner = new Scanner(System.in);
+
+           }
 
             switch (choiceOne) {
 
@@ -33,6 +47,10 @@ public class Menu {
                 runMenuOne = false;
                 break;
 
+                default:
+                System.out.println("Felaktig inmatning, försök igen.");
+                break;
+
             }
         } 
 
@@ -43,6 +61,7 @@ public class Menu {
     public void menuTwo() {
 
          boolean runMenuTwo = true;
+         int choiceTwo = 0;
 
          do {
             
@@ -52,7 +71,19 @@ public class Menu {
             System.out.println("3. Visa saldo");
             System.out.println("4. Avsluta");
             System.out.print("Ange menyval: ");
-            int choiceTwo = scanner.nextInt();
+            
+            try {
+
+                choiceTwo = scanner.nextInt();
+
+            }
+
+            catch (InputMismatchException noNumber) {
+
+                System.out.println("Felaktig inmatning, försök igen.");
+                scanner = new Scanner(System.in);
+
+            }
 
             switch (choiceTwo) {
 
@@ -70,6 +101,10 @@ public class Menu {
 
                 case 4:
                 runMenuTwo = false;
+                break;
+
+                default:
+                System.out.println("Felaktig inmatning, försök igen.");
                 break;
 
             }
