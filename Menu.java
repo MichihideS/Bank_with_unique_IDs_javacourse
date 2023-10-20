@@ -1,17 +1,14 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-
     private Scanner scanner = new Scanner(System.in);
     private Management management = new Management();
 
     public void mainMenu() {
-
-        boolean runMenuOne = true;
-        int choiceOne = 0;
+        boolean isMenuOne = true;
 
         do {
+            int choiceOne = 0;
 
             System.out.println("***HUVUDMENY***");
             System.out.println("1. Skapa konto");
@@ -20,19 +17,12 @@ public class Menu {
             System.out.print("Ange menyval: ");
             
              if (scanner.hasNextInt()) {
-
                 choiceOne = scanner.nextInt();
-
-            }
-            
-            else {
-
+            } else {
                 scanner.nextLine();
-                
             }
                 
             switch (choiceOne) {
-
                 case 1:
                 management.addAccount();
                 break;
@@ -43,26 +33,24 @@ public class Menu {
                 break;
 
                 case 3:
-                runMenuOne = false;
+                isMenuOne = false;
                 break;
 
                 default:
                 System.out.println("Felaktig inmatning, försök igen.");
                 break;
-
             }
         } 
 
-        while (runMenuOne);
-
+        while (isMenuOne);
     }
 
     public void menuTwo() {
 
-         boolean runMenuTwo = true;
-         int choiceTwo = 0;
+         boolean isMenuTwo = true;
 
-         do {
+        do {
+            int choiceTwo = 0;
             
             System.out.println("***KONTOMENY*** " + "Konto: " + management.getLogin());
             System.out.println("1. Ta ut pengar");
@@ -71,20 +59,13 @@ public class Menu {
             System.out.println("4. Avsluta");
             System.out.print("Ange menyval: ");
      
-             if (scanner.hasNextInt()) {
-                
+            if (scanner.hasNextInt()) {
                 choiceTwo = scanner.nextInt();
-
-            }
-            
-            else {
-
+            } else {
                 scanner.nextLine();
-                
             }
 
             switch (choiceTwo) {
-
                 case 1:
                 management.withdraw();
                 break;
@@ -98,17 +79,14 @@ public class Menu {
                 break;
 
                 case 4:
-                runMenuTwo = false;
+                isMenuTwo = false;
                 break;
 
                 default:
                 System.out.println("Felaktig inmatning, försök igen.");
                 break;
-
             }
         }
-
-        while (runMenuTwo);
-
+        while (isMenuTwo);
     }
 }
