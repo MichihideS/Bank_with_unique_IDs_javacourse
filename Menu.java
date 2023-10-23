@@ -14,17 +14,18 @@ public class Menu {
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
+            System.out.println("4. KOLLA LISTA");
             System.out.print("Ange menyval: ");
             
              if (scanner.hasNextInt()) {
-                choiceOne = scanner.nextInt();
+                                choiceOne = scanner.nextInt();
             } else {
                 scanner.nextLine();
             }
                 
             switch (choiceOne) {
                 case 1:
-                management.addAccount();
+                management.accountCheck();
                 break;
 
                 case 2:
@@ -34,6 +35,10 @@ public class Menu {
 
                 case 3:
                 isMenuOne = false;
+                break;
+
+                case 4:
+                management.listCheck();
                 break;
 
                 default:
