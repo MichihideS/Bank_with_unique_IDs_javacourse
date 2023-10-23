@@ -1,36 +1,39 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
     private Management management = new Management();
 
+    //Runs the main menu
     public void mainMenu() {
         boolean isMenuOne = true;
 
         do {
-            int choiceOne = 0;
+            int menuChoiceOne = 0;
 
-            System.out.println("***HUVUDMENY***");
+            System.out.println("\n***HUVUDMENY***");
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
             System.out.println("4. KOLLA LISTA");
-            System.out.print("Ange menyval: ");
-            
-             if (scanner.hasNextInt()) {
-                                choiceOne = scanner.nextInt();
-            } else {
-                scanner.nextLine();
-            }
-                
-            switch (choiceOne) {
+            System.out.println("\nAnge menyval: ");
+        try {
+            menuChoiceOne = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            scanner.nextLine();
+        }
+
+            switch (menuChoiceOne) {
                 case 1:
                 management.accountCheck();
                 break;
 
                 case 2:
-                management.loginAccount();
-                menuTwo();
+                management.accountCheckLogin();
+                if (management.isLoggedIn() == true)  {
+                    menuTwo();
+                }
                 break;
 
                 case 3:
@@ -42,7 +45,7 @@ public class Menu {
                 break;
 
                 default:
-                System.out.println("Felaktig inmatning, försök igen.");
+                System.out.println("\nFelaktig inmatning, försök igen.");
                 break;
             }
         } 
@@ -50,37 +53,38 @@ public class Menu {
         while (isMenuOne);
     }
 
+    //Runs the second menu if "logged in" to an accountindex
     public void menuTwo() {
 
          boolean isMenuTwo = true;
 
         do {
-            int choiceTwo = 0;
+            int menuChoiceTwo = 0;
             
-            System.out.println("***KONTOMENY*** " + "Konto: " + management.getLogin());
+            System.out.println("\n***KONTOMENY*** " + "Konto: " + management.getLogin());
             System.out.println("1. Ta ut pengar");
             System.out.println("2. Sätt in pengar");
             System.out.println("3. Visa saldo");
             System.out.println("4. Avsluta");
-            System.out.print("Ange menyval: ");
+            System.out.println("\nAnge menyval: ");
      
             if (scanner.hasNextInt()) {
-                choiceTwo = scanner.nextInt();
+                menuChoiceTwo = scanner.nextInt();
             } else {
                 scanner.nextLine();
             }
 
-            switch (choiceTwo) {
+            switch (menuChoiceTwo) {
                 case 1:
-                management.withdraw();
+                management.accountWithdraw();
                 break;
 
                 case 2:
-                management.deposit();
+                management.accountDeposit();
                 break;
 
                 case 3:
-                management.balance();
+                management.accountBalance();
                 break;
 
                 case 4:
@@ -88,7 +92,7 @@ public class Menu {
                 break;
 
                 default:
-                System.out.println("Felaktig inmatning, försök igen.");
+                System.out.println("\nFelaktig inmatning, försök igen.");
                 break;
             }
         }

@@ -1,21 +1,25 @@
 public class Account {
     private int account;
-    private int balance;
+    private double balance;
     
-    public Account (int account, int balance) {
+    //Constructor for account number and starter balance
+    public Account (int account, double balance) {
         this.account = account;
         this.balance = balance;
     }
 
+    //returns accountnumber
     public int getAccount() {
         return this.account;
     }
 
-    public int getBalance() {
+    //returns current balance
+    public double getBalance() {
         return this.balance;
     }
 
-    public void setBalance(int balance) {
+    //sets the balance value
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }
