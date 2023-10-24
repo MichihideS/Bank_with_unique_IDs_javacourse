@@ -11,12 +11,6 @@ public class Management {
     private boolean isLoggedIn;
     private String numberChecker;
 
-    public void listCheck () {
-        for (int i = 0; i < bankAccounts.size(); i++) {
-            System.out.println(bankAccounts.get(i).getAccount());
-        }
-    }
-
     //Checks if the input is an integer and moves to the create account method if it is
     public void accountCheck() {
         System.out.print("\nAnge kontonummer: ");
@@ -118,7 +112,7 @@ public class Management {
     //If you have enough money, withdraws it from the "logged in" accountindex balance
     public void accountWithdraw() {
         System.out.print("\nAnge belopp: ");
-        numberChecker = scanner.next();
+        numberChecker = scanner.nextLine();
 
         try {
             if (isNumber(numberChecker)) {
@@ -127,8 +121,10 @@ public class Management {
                 if (moneyWithdraw <= bankAccounts.get(accountIndex).getBalance()) {
                     bankAccounts.get(accountIndex).setBalance(bankAccounts.get(accountIndex).getBalance() - moneyWithdraw);
                     System.out.println("\nOK");
+                    return;
                 } else if (moneyWithdraw > bankAccounts.get(accountIndex).getBalance()) {
                     System.out.println("\nDu har för litet saldo.");
+                    return;
                 }
             } else {
                 errorMessage();

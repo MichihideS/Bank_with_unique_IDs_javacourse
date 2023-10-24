@@ -4,13 +4,17 @@ import java.util.Scanner;
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
     private Management management = new Management();
+    private boolean isMenuOne;
+    private boolean isMenuTwo;
+    private int menuChoiceOne;
+    private int menuChoiceTwo;
 
     //Runs the main menu
-    public void mainMenu() {
-        boolean isMenuOne = true;
+    public void menuOne() {
+        isMenuOne = true;
 
         do {
-            int menuChoiceOne = 0;
+            menuChoiceOne = 0;
 
             System.out.println("\n***HUVUDMENY***");
             System.out.println("1. Skapa konto");
@@ -40,10 +44,6 @@ public class Menu {
                 isMenuOne = false;
                 break;
 
-                case 4:
-                management.listCheck();
-                break;
-
                 default:
                 System.out.println("\nFelaktig inmatning, försök igen.");
                 break;
@@ -56,10 +56,10 @@ public class Menu {
     //Runs the second menu if "logged in" to an accountindex
     public void menuTwo() {
 
-         boolean isMenuTwo = true;
+        isMenuTwo = true;
 
         do {
-            int menuChoiceTwo = 0;
+            menuChoiceTwo = 0;
             
             System.out.println("\n***KONTOMENY*** " + "Konto: " + management.getLogin());
             System.out.println("1. Ta ut pengar");
