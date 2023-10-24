@@ -20,7 +20,6 @@ public class Menu {
             System.out.println("1. Skapa konto");
             System.out.println("2. Administrera konto");
             System.out.println("3. Avsluta");
-            System.out.println("4. KOLLA LISTA");
             System.out.println("\nAnge menyval: ");
         try {
             menuChoiceOne = scanner.nextInt();
