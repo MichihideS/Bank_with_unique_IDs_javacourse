@@ -31,7 +31,7 @@ public class Management {
     }
        
     //Creates the account if the number isn't taken
-    public void accountCreate() {
+    private void accountCreate() {
         double balance = 0;
 
         if (bankAccounts.isEmpty()) {
@@ -72,7 +72,7 @@ public class Management {
     }
 
     //Checks if the account number exists and if it does "logs in" and saves the index where its stored
-    public void accountLogin() {
+    private void accountLogin() {
         for (int i = 0; i < bankAccounts.size(); i++) {
             if (accountLoggedIn == (bankAccounts.get(i).getAccount())) {
                 accountIndex = i;
@@ -145,7 +145,7 @@ public class Management {
     }
 
     //Function that checks if the input string is numbers only
-    public boolean isNumber(String numberCheck) {
+    private boolean isNumber(String numberCheck) {
         for (int i = 0; i < numberCheck.length(); i++) {
             if (Character.isDigit(numberCheck.charAt(i)) == true) {
                 return true;
@@ -155,7 +155,7 @@ public class Management {
         return false;
     }
 
-    public void errorMessage() {
+    private void errorMessage() {
         System.out.println("\nFelaktig inmatning, försök igen.");
     }
 
